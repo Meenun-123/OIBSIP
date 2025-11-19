@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter | Task 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+
+    <div class="box">
+        <h2>Temperature Converter</h2>
+
+        <input type="number" id="tempInput" placeholder="Enter temperature">
+
+        <select id="unit">
+            <option value="celsius">Celsius (°C)</option>
+            <option value="fahrenheit">Fahrenheit (°F)</option>
+        </select>
+
+        <button onclick="convertTemp()">Convert</button>
+
+        <p id="resultText"></p>
+
+        <div id="moodBox">
+            <p id="moodText">NORMAL</p>
+        </div>
+    </div>
+
+    <script>
+        function convertTemp() {
+            let value = parseFloat(document.getElementById("tempInput").value);
+            let unit = document.getElementById("unit").value;
+            let result = document.getElementById("resultText");
+            let body = document.getElementById("body");
+            let mood = document.getElementById("moodText");
+
+            if (isNaN(value)) {
+                result.innerHTML = "Please enter a valid number!";
+                return;
+            }
+
+            let celsius;
+
+            if (unit === "celsius") {
+                celsius = value;
+                result.innerHTML = `${value}°C = ${(value * 9/5 + 32).toFixed(2)}°F`;
+            } else {
+                celsius = (value - 32) * 5/9;
+                result.innerHTML = `${value}°F = ${celsius.toFixed(2)}°C`;
+            }
+
+            if (celsius <= 0) {
+                body.style.background = "#7ecbff";
+                mood.textContent = "TOO COLD!";
+                mood.style.color = "#004f9e";
+            } 
+            else if (celsius > 0 && celsius <= 15) {
+                body.style.background = "#a3d4ff";
+                mood.textContent = "COLD";
+                mood.style.color = "#005fbd";
+            }
+            else if (celsius > 15 && celsius <= 30) {
+                body.style.background = "#ffe9a8";
+                mood.textContent = "WARM";
+                mood.style.color = "#ad7a00";
+            }
+            else if (celsius > 30 && celsius <= 40) {
+                body.style.background = "#ffcf7d";
+                mood.textContent = "HOT";
+                mood.style.color = "#b85a00";
+            }
+            else {
+                body.style.background = "#ff8c8c";
+                mood.textContent = "TOO HOT!";
+                mood.style.color = "#a80000";
+            }
+        }
+    </script>
+
+</body>
+</html>
