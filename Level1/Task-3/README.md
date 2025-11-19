@@ -7,9 +7,8 @@ The application also changes the **background color** based on how hot or cold t
 ---
 
 ## 🔗 Live Demo
-(Add your deployed link here)
 
-https://your-task3-link.vercel.app/
+https://task3-nu-ivory.vercel.app/
 
 ---
 
